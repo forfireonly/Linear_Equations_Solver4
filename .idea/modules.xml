@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Linear_Equations_Solver4.iml" filepath="$PROJECT_DIR$/.idea/modules/Linear_Equations_Solver4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Linear Equations Solver/task/Linear_Equations_Solver4.Linear_Equations_Solver-task.iml" filepath="$PROJECT_DIR$/.idea/modules/Linear Equations Solver/task/Linear_Equations_Solver4.Linear_Equations_Solver-task.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Linear Equations Solver/task/Linear_Equations_Solver4.Linear_Equations_Solver-task.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Linear Equations Solver/task/Linear_Equations_Solver4.Linear_Equations_Solver-task.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Linear Equations Solver/task/Linear_Equations_Solver4.Linear_Equations_Solver-task.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Linear Equations Solver/task/Linear_Equations_Solver4.Linear_Equations_Solver-task.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Square of a circle/Linear_Equations_Solver4.Problems-Square_of_a_circle.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Square of a circle/Linear_Equations_Solver4.Problems-Square_of_a_circle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Square of a circle/Linear_Equations_Solver4.Problems-Square_of_a_circle.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Square of a circle/Linear_Equations_Solver4.Problems-Square_of_a_circle.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Square of a circle/Linear_Equations_Solver4.Problems-Square_of_a_circle.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Square of a circle/Linear_Equations_Solver4.Problems-Square_of_a_circle.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/Linear_Equations_Solver4.util.iml" filepath="$PROJECT_DIR$/.idea/modules/util/Linear_Equations_Solver4.util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/Linear_Equations_Solver4.util.main.iml" filepath="$PROJECT_DIR$/.idea/modules/util/Linear_Equations_Solver4.util.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/Linear_Equations_Solver4.util.test.iml" filepath="$PROJECT_DIR$/.idea/modules/util/Linear_Equations_Solver4.util.test.iml" />
+    </modules>
+  </component>
+</project>
