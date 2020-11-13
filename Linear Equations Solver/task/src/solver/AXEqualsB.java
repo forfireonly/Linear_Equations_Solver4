@@ -3,12 +3,19 @@ package solver;
 import java.io.IOException;
 
 public class AXEqualsB extends EquationSolver {
-    double a = 0;
-    double b = 0;
+    private double a;
+    private double b;
+
+    public void setA(double a) {
+        this.a = a;
+    }
+    public void setB(double b) {
+        this.b = b;
+    }
     @Override
     public void solve() throws IOException {
-        readInput();
-        System.out.println((double) b / a);
+
+        System.out.printf("%.5f ", (double) b / a);
 
     }
 
