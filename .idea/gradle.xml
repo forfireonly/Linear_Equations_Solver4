@@ -13,6 +13,8 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/Linear Equations Solver/task" />
+            <option value="$PROJECT_DIR$/Problems/Count a window active time" />
+            <option value="$PROJECT_DIR$/Problems/Implement a listener" />
             <option value="$PROJECT_DIR$/Problems/Square of a circle" />
             <option value="$PROJECT_DIR$/util" />
           </set>
