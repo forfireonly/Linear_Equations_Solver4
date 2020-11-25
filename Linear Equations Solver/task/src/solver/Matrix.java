@@ -27,10 +27,8 @@ public class Matrix {
         this.matrixArrayList = matrixArrayList;
     }
 
-    public boolean createMatrix() {
-        //numberOfEquations = Integer.parseInt(matrixArrayList.get(0));
+    public void createMatrix() {
         boolean isSolvable = true;
-        int solvableIndex = 1;
         String[] dim = matrixArrayList.get(0).split(" ");
         numberOfVariables = Integer.parseInt(dim[0]);
         numberOfEquations = Integer.parseInt(dim[1]);
@@ -65,9 +63,7 @@ public class Matrix {
         }
         if (numberOfEquations < numberOfVariables) {
             isSolvable = false;
-            solvableIndex = 2;
         }
-        return isSolvable;
     }
 
     public boolean checkZeroRow(String[] row) {
@@ -101,51 +97,9 @@ public class Matrix {
         }
     }
 
-    public void swipeRows() {
-        int column = 0;
-        int nonZeroRow = 0;
-
-        int zeroRow = 0;
-
-        for (int i = 0; i < numberOfEquations; i++) {
-            // if (systemOfEquations[i][column] == 0) {
-            while (systemOfEquations[nonZeroRow][column] == 0 && nonZeroRow + 1 < numberOfEquations) {
-                nonZeroRow = nonZeroRow + 1;
-                if (systemOfEquations[nonZeroRow][column] != 0) {
-                    break;
-                }
-            }
-
-            for (int j = 0; j < numberOfVariables + 1; j++) {
-                float temp = systemOfEquations[i][j];
-                systemOfEquations[i][j] = systemOfEquations[nonZeroRow][j];
-                systemOfEquations[nonZeroRow][j] = temp;
-            }
-
-            System.out.println("R" + (zeroRow + 1) + "<->" + " R" + (nonZeroRow + 1));
-            // }
-        }
-        for (int i = 0; i < numberOfEquations; i++) {
-            for (int j = 0; j < numberOfVariables + 1; j++) {
-                System.out.print(systemOfEquations[i][j] + " ");
-            }
-            System.out.println();
-        }
-
-        System.out.println();
-
-    }
-
     public void swipeAllRows() {
         int column = 0;
 
-        int row = 0;
-
-        boolean isZero = false;
-        int zeroRow = 0;
-
-        boolean isNonZero = false;
-        int nonZeroRow = 0;
         System.out.println("Swiping");
 
         for (int i = column; i < numberOfEquations; i++) {
@@ -165,27 +119,8 @@ public class Matrix {
                     }
                 }
             }
-
         }
 
-        /*for (int i = 0; i < numberOfEquations; i++) {
-            // if (systemOfEquations[i][column] == 0) {
-            while (systemOfEquations[nonZeroRow][column] == 0 && nonZeroRow + 1 < numberOfEquations) {
-                nonZeroRow = nonZeroRow + 1;
-                if (systemOfEquations[nonZeroRow][column] != 0) {
-                    break;
-                }
-            }
-
-            for (int j = 0; j < numberOfVariables + 1; j++) {
-                float temp = systemOfEquations[i][j];
-                systemOfEquations[i][j] = systemOfEquations[nonZeroRow][j];
-                systemOfEquations[nonZeroRow][j] = temp;
-            }
-
-            System.out.println("R" + (zeroRow + 1) + "<->" + " R" + (nonZeroRow + 1));
-            // }
-        }*/
         for (int i = 0; i < numberOfEquations; i++) {
             for (int j = 0; j < numberOfVariables + 1; j++) {
                 System.out.print(systemOfEquations[i][j] + " ");
@@ -208,67 +143,17 @@ public class Matrix {
         return isEchelon;
     }
 
-    public void swipeRows(int zeroRow) {
-        int nonZeroRow = 0;
-        for (int i = zeroRow + 1; i < numberOfEquations; i++) {
-            if (systemOfEquations[i][zeroRow] != 0) {
-                nonZeroRow = i;
-                System.out.println(nonZeroRow);
-                break;
-            }
-        }
-
-        for (int j = 0; j < numberOfVariables + 1; j++) {
-            float temp = systemOfEquations[zeroRow][j];
-            systemOfEquations[zeroRow][j] = systemOfEquations[nonZeroRow][j];
-            systemOfEquations[nonZeroRow][j] = temp;
-        }
-
-        System.out.println("R" + (zeroRow + 1) + "<->" + " R" + (nonZeroRow + 1));
-        // }
-
-        for (int i = 0; i < numberOfEquations; i++) {
-            for (int j = 0; j < numberOfVariables + 1; j++) {
-                System.out.print(systemOfEquations[i][j] + " ");
-            }
-            System.out.println();
-        }
-
-        System.out.println();
-
-    }
-
-    public boolean checkEchelonI() {
-        boolean isEchelon = true;
-        for (int i = 1; i < numberOfEquations; i++) {
-            if (systemOfEquations[0][0] != systemOfEquations[i][i] || systemOfEquations[0][0] == 0) {
-                isEchelon = false;
-                index = i;
-                break;
-            }
-        }
-        return isEchelon;
-    }
-
-    public boolean gaussGordan() {
+    public void gaussGordan() {
         float multiplier = 0.0f;
         float normalizer = 0.0f;
         boolean isEchelon = false;
 
-        // for (int i = 0; i < numberOfVariables; i++) {
-
-       /* if (systemOfEquations[0][0] == 0 || !isEchelon) {
-            swipeAllRows();
-        }*/
-        //}
-
         isEchelon = checkEchelon();
-        //System.out.println("Start solving the equation.");
+
         if (systemOfEquations[0][0] == 0 || !isEchelon) {
             swipeAllRows();
         }
 
-        //isEchelon = checkEchelonI();
         isEchelon = checkEchelon();
 
         System.out.println(index);
@@ -279,7 +164,6 @@ public class Matrix {
             do {
                 System.out.println("1");
                 while (j < numberOfEquations || i == numberOfEquations - 1) {
-                    //System.out.println("2");
                     if (systemOfEquations[i][i] == 1.0) {
                         System.out.println("2");
                         multiplier = -systemOfEquations[j][i];
@@ -291,7 +175,6 @@ public class Matrix {
                             if (systemOfEquations[j][z] == 0.0) {
                                 numberOfZero = numberOfZero + 1;
                             }
-
                         }
                         if (numberOfZero == numberOfVariables + 1) {
                             isInfinite = true;
@@ -308,9 +191,7 @@ public class Matrix {
 
                     } else if (systemOfEquations[i][i] != 1.0) {
                         System.out.println("3");
-                        // if (systemOfEquations[i][i] == 0) {
-                        //     swipeRows(i);
-                        // }
+
                         normalizer = 1 / systemOfEquations[i][i];
                         for (int w = 0; w < numberOfVariables + 1; w++) {
                             systemOfEquations[i][w] = systemOfEquations[i][w] * normalizer;
@@ -337,7 +218,6 @@ public class Matrix {
                         i = indexKeeper;
                     }
                 }
-                //j = j + 1;
                 j = i + 2;
                 i = i + 1;
 
@@ -353,79 +233,7 @@ public class Matrix {
             }
             System.out.println();
         }
-        return isInfinite;
     }
-
-    /*public void gaussGordan() {
-        float multiplier = 0.0f;
-        float normalizer = 0.0f;
-        boolean isEchelon = false;
-
-        // for (int i = 0; i < numberOfVariables; i++) {
-
-        if (systemOfEquations[0][0] == 0) {
-            swipeRows();
-        }
-        //}
-
-        isEchelon = checkEchelon();
-        //System.out.println("Start solving the equation.");
-        int i = 0;
-        int j = 1;
-
-        if (!isEchelon) {
-            do {
-                System.out.println("1");
-                while (j < numberOfEquations || i == numberOfEquations - 1) {
-                    //System.out.println("2");
-                    if (systemOfEquations[i][i] == 1.0 && systemOfEquations[i + 1][i + 1] != 1.0) {
-                       // System.out.println("2");
-                        multiplier = -systemOfEquations[j][i];
-                        for (int z = 0; z < numberOfEquations + 1; z++) {
-
-                            systemOfEquations[j][z] =
-                                    systemOfEquations[i][z] * multiplier +
-                                            systemOfEquations[j][z];
-
-
-                        }
-                        System.out.println(multiplier + " * " + "R" + (i + 1) + " + " +
-                                "R" + (j + 1) + " -> " + "R" + (j + 1));
-                        j = j + 1;
-
-
-                    } else if (systemOfEquations[i][i] != 1.0) {
-                        System.out.println("3");
-                       // if (systemOfEquations[i][i] == 0) {
-                       //     swipeRows(i);
-                       // }
-                        normalizer = 1 / systemOfEquations[i][i];
-                        for (int w = 0; w < numberOfEquations + 1; w++) {
-                            systemOfEquations[i][w] = systemOfEquations[i][w] * normalizer;
-                        }
-                        System.out.println(normalizer + " * " + "R" + (i + 1) + " -> " + "R" +
-                                (i + 1));
-                        if (i == numberOfEquations - 1) {
-                            break;
-                        }
-                    }
-                }
-                //j = j + 1;
-                j = i + 2;
-                i = i + 1;
-
-
-            } while (i < numberOfEquations);
-        }
-
-
-        for (int ii = 0; ii < numberOfEquations; ii++) {
-            for (int jj = 0; jj < numberOfEquations + 1; jj++) {
-                System.out.print(systemOfEquations[ii][jj] + " ");
-            }
-            System.out.println();
-        }
-    }*/
 
     public void reduceForm() {
         float multiplier = 0.0f;
@@ -462,8 +270,6 @@ public class Matrix {
     public boolean checkAnswer() {
         boolean isAnswerExist = false;
 
-        //if (systemOfEquations[numberOfEquations - 1] [numberOfVariables] != 0.0) {
-        //   System.out.println(systemOfEquations[numberOfEquations - 1] [numberOfVariables]);
         for (int i = 0; i < numberOfVariables; i++) {
             if (systemOfEquations[numberOfEquations - 1][i] != 0.0) {
                 isAnswerExist = true;
@@ -471,11 +277,8 @@ public class Matrix {
                 break;
             }
         }
-        // }
-
         return isAnswerExist;
     }
-
 
     public void writeToFile() {
         File file = new File(fileNameToWrite);
@@ -489,24 +292,6 @@ public class Matrix {
                     printWriter.print(systemOfEquations[iii][numberOfVariables] + "\n");
                 }
             }
-        } catch (IOException e) {
-            System.out.printf("An exception occurs %s", e.getMessage());
-        }
-    }
-
-    public void writeToFile2() {
-        File file = new File(fileNameToWrite);
-        try (PrintWriter printWriter = new PrintWriter(file)) {
-            printWriter.print("Infinitely many solutions");
-        } catch (IOException e) {
-            System.out.printf("An exception occurs %s", e.getMessage());
-        }
-    }
-
-    public void writeToFile3() {
-        File file = new File(fileNameToWrite);
-        try (PrintWriter printWriter = new PrintWriter(file)) {
-            printWriter.print("No solutions");
         } catch (IOException e) {
             System.out.printf("An exception occurs %s", e.getMessage());
         }
