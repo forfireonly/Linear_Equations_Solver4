@@ -13,6 +13,8 @@ public class Main {
         File file = new File(pathToFile);
         boolean isEchelon = false;
 
+        boolean isFinite = true;
+
         ArrayList<String> inputFile = new ArrayList<>();
         try (Scanner scanner = new Scanner(file)) {
             while (scanner.hasNext()) {
@@ -26,18 +28,34 @@ public class Main {
         Matrix myMatrix = new Matrix();
         myMatrix.setMatrixArrayList(inputFile);
         myMatrix.setFileNameToWrite(pathToFileToWrite);
-        myMatrix.createMatrix();
+        isFinite = myMatrix.createMatrix();
         //isEchelon = myMatrix.checkEchelon();
-        //if (isEchelon) {
-        //    myMatrix.reduce();
+       // if (isFinite) {
+            System.out.println("Start solving the equation.");
+            isEchelon = myMatrix.checkEchelon();
+            if (isEchelon) {
+                myMatrix.reduce();
+            }
+        /*if (isEchelon) {
+            myMatrix.reduce();
+         }*/
+            //isEchelon = myMatrix.checkEchelonReduced();
+            if (isEchelon) {
+                myMatrix.writeToFile();
+                System.out.println("Here");
+            } else {
+                System.out.println("Not here");
+                isFinite = myMatrix.gaussGordan();
+                //if (!isFinite) {
+                    myMatrix.reduceForm();
+                    myMatrix.writeToFile();
+               // } else {
+               //     myMatrix.writeToFile2();
+               // }
+
+            }
+        //} else {
+        //    myMatrix.writeToFile3();
        // }
-        isEchelon = myMatrix.checkEchelonReduced();
-        if (isEchelon) {
-            myMatrix.writeToFile();
-        } else {
-            myMatrix.gaussGordan();
-            myMatrix.reduceForm();
-            myMatrix.writeToFile();
-        }
     }
 }
