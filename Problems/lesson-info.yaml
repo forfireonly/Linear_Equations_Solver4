@@ -6,3 +6,10 @@ content:
 - Forex Broker
 - Undo command
 - Remote Controller
+- Users as strings
+- Time as a string
+- Books as strings
+- Account
+- Convert persons and patients to string
+- Convert vehicles and cars to string
+- Initialize a collection

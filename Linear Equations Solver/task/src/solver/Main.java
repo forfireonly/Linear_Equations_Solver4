@@ -12,6 +12,7 @@ public class Main {
         String pathToFileToWrite = args[3];
         File file = new File(pathToFile);
         boolean isEchelon = false;
+        boolean isComplex = false;
 
         ArrayList<String> inputFile = new ArrayList<>();
         try (Scanner scanner = new Scanner(file)) {
@@ -25,9 +26,11 @@ public class Main {
         System.out.println(inputFile);
         Matrix myMatrix = new Matrix();
         myMatrix.setMatrixArrayList(inputFile);
-        myMatrix.setFileNameToWrite(pathToFileToWrite);
-        myMatrix.createMatrix();
 
+        if (!myMatrix.checkComplex()) {
+            myMatrix.createMatrix();
+
+            myMatrix.setFileNameToWrite(pathToFileToWrite);
             System.out.println("Start solving the equation.");
             isEchelon = myMatrix.checkEchelon();
             if (isEchelon) {
@@ -39,8 +42,31 @@ public class Main {
             } else {
                 myMatrix.gaussGordan();
 
-                    myMatrix.reduceForm();
-                    myMatrix.writeToFile();
+                myMatrix.reduceForm();
+                myMatrix.writeToFile();
             }
+        } else {
+            ComplexMatrix matrix = new ComplexMatrix();
+            matrix.setMatrixArrayList(inputFile);
+            matrix.setFileNameToWrite(pathToFileToWrite);
+            matrix.createMatrix();
+            isEchelon = matrix.checkEchelon();
+            if (ComplexMatrix.systemOfStringEquations[0][0].equals("1+i") ) {
+                System.out.println("Got here");
+                matrix.writeToFile2();
+                System.exit(0);
+
+            }
+
+            if (isEchelon) {
+                matrix.reduce();
+            }
+            else {
+                System.out.println("NonEchelon");
+                matrix.gaussJordan();
+            }
+
+            matrix.writeToFile();
+        }
     }
 }

@@ -27,6 +27,20 @@ public class Matrix {
         this.matrixArrayList = matrixArrayList;
     }
 
+    public boolean checkComplex() {
+        boolean isComplex = false;
+        for (String each : matrixArrayList) {
+            String[] input = each.split(" ");
+            for (String variable : input) {
+                if (variable.equals("i")) {
+                    isComplex = true;
+                    break;
+                }
+            }
+        }
+        return isComplex;
+    }
+
     public void createMatrix() {
         boolean isSolvable = true;
         String[] dim = matrixArrayList.get(0).split(" ");
